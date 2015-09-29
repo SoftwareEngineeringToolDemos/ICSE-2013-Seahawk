@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<schema name="example" version="1.4">
+  
+  <types>
+    
+    <!-- The StrField type is not analyzed, but indexed/stored verbatim. -->
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
+
+   
+   <fieldType name="text_en" class="solr.TextField" positionIncrementGap="100">
+        <analyzer type="index">
+           <charFilter class="solr.HTMLStripCharFilterFactory"/>
+            <tokenizer class="solr.StandardTokenizerFactory"/>
+			<filter class="solr.TrimFilterFactory" />
+			<filter class="solr.SynonymFilterFactory" synonyms="tag_synonyms.txt" ignoreCase="true" expand="false"/>
+			<!-- <filter class="solr.WordDelimiterFilterFactory" 
+							splitOnCaseChange="1" splitOnNumerics="1" stemEnglishPossessive="1" 
+							generateWordParts="1" generateNumberParts="1" catenateWords="1" preserveOriginal="1" protected="tag_protwords.txt"/> -->
+            <filter class="solr.LowerCaseFilterFactory"/>    
+        	<filter class="solr.ClassicFilterFactory"/>
+			<filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true"/>
+            <filter class="solr.PorterStemFilterFactory"/>
+        </analyzer>
+    
+        <analyzer type="query">
+            <tokenizer class="solr.StandardTokenizerFactory"/>
+			<filter class="solr.TrimFilterFactory" />
+            <filter class="solr.SynonymFilterFactory" synonyms="tag_synonyms.txt" ignoreCase="true" expand="false"/>
+			<!-- <filter class="solr.WordDelimiterFilterFactory" 
+							splitOnCaseChange="1" splitOnNumerics="1" stemEnglishPossessive="1" 
+							generateWordParts="1" generateNumberParts="1" catenateWords="1" preserveOriginal="1" protected="tag_protwords.txt"/> -->
+            <filter class="solr.LowerCaseFilterFactory"/>    
+        	<filter class="solr.ClassicFilterFactory"/>
+			<filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true"/>
+            <filter class="solr.PorterStemFilterFactory"/>
+        </analyzer>
+    </fieldType>
+
+	<!--<fieldType name="tagField" class="solr.TextField" positionIncrementGap="100">
+	        <analyzer type="index">
+	            <tokenizer class="solr.KeywordTokenizerFactory"/>
+				<filter class="solr.TrimFilterFactory" />
+				<filter class="solr.SynonymFilterFactory" synonyms="tag_synonyms.txt" ignoreCase="true" expand="false"/>
+				<filter class="solr.WordDelimiterFilterFactory" 
+					splitOnCaseChange="1" splitOnNumerics="1" stemEnglishPossessive="1" 
+					generateWordParts="1" generateNumberParts="1" catenateWords="1" preserveOriginal="1" protected="tag_protwords.txt"/>
+	            <filter class="solr.LowerCaseFilterFactory"/>    
+	        	<filter class="solr.ClassicFilterFactory"/>
+				<filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true"/>
+	            <filter class="solr.PorterStemFilterFactory"/>
+	        </analyzer>
+
+	        <analyzer type="query">
+	            <tokenizer class="solr.KeywordTokenizerFactory"/>
+	            <filter class="solr.TrimFilterFactory" />
+				<filter class="solr.SynonymFilterFactory" synonyms="tag_synonyms.txt" ignoreCase="true" expand="false"/>
+				<filter class="solr.WordDelimiterFilterFactory" 
+					splitOnCaseChange="1" splitOnNumerics="1" stemEnglishPossessive="1" 
+					generateWordParts="1" generateNumberParts="1" catenateWords="1" preserveOriginal="1" protected="tag_protwords.txt"/>
+	            <filter class="solr.LowerCaseFilterFactory"/>    
+	        	<filter class="solr.ClassicFilterFactory"/>
+				<filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true"/>
+	            <filter class="solr.PorterStemFilterFactory"/>
+	        </analyzer>
+	    </fieldType>-->
+    
+ </types>
+
+
+ <fields>
+
+   <field name="id" type="string" indexed="true" stored="true" required="true" /> 
+   <field name="title" type="text_en" indexed="true" stored="true" termVectors="true" termPositions="true" termOffset="true"/>
+   <field name="document" type="text_en" indexed="true" stored="true" termVectors="true" termPositions="true" termOffset="true"/>
+   <field name="tag" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+
+
+ </fields>
+
+ <uniqueKey>id</uniqueKey>
+ <defaultSearchField>document</defaultSearchField>
+ <solrQueryParser defaultOperator="OR"/>
+
+ <!-- Similarity is the scoring routine for each document vs. a query.
+      A custom similarity may be specified here, but the default is fine
+      for most applications.  -->
+ <!-- <similarity class="org.apache.lucene.search.DefaultSimilarity"/> -->
+ <!-- ... OR ...
+      Specify a SimilarityFactory class name implementation
+      allowing parameters to be used.
+ -->
+ <!--
+ <similarity class="com.example.solr.CustomSimilarityFactory">
+   <str name="paramkey">param value</str>
+ </similarity>
+ -->
+
+
+</schema>

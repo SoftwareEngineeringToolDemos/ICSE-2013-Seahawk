@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Seahawk Views"
+            id="ch.usi.inf.seahawk">
+      </category>
+      <view
+            allowMultiple="false"
+            category="ch.usi.inf.seahawk"
+            class="ch.usi.inf.seahawk.views.DocumentTreeView"
+            icon="icons/icon.png"
+            id="ch.usi.inf.seahawk.views.DocumentTreeView"
+            name="Document Navigator">
+      </view>
+      <view
+            allowMultiple="true"
+            category="ch.usi.inf.seahawk"
+            class="ch.usi.inf.seahawk.views.DocumentView"
+            icon="icons/icon.png"
+            id="ch.usi.inf.seahawk.views.DocumentView"
+            name="Document's Content">
+      </view>
+       <view
+            allowMultiple="false"
+            category="ch.usi.inf.seahawk"
+            class="ch.usi.inf.seahawk.views.SuggestedDocsTreeView"
+            icon="icons/icon.png"
+            id="ch.usi.inf.seahawk.views.SuggestedDocsTreeView"
+            name="Suggested Documents">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="ch.usi.inf.seahawk.preferences.SeahawkPreferenceInitializer">
+      </initializer>
+   </extension>
+   
+   
+   
+   
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="ch.usi.inf.seahawk.preferences.SeahawkPreferencePage"
+            id="ch.usi.inf.seahawk.preferences.MainPreferencePage"
+            name="Seahawk">
+      </page>
+      <page
+            category="ch.usi.inf.seahawk.preferences.MainPreferencePage"
+            class="ch.usi.inf.seahawk.preferences.SolrPreferencePage"
+            id="ch.usi.inf.seahawk.preferences.SolrPreferencePage"
+            name="Solr Preferences">
+      </page>
+   </extension>
+   
+   
+
+   <extension 
+	    point="org.eclipse.ui.decorators">
+		
+		<decorator
+			label="SeahawkDecorator"
+			adaptable="true"
+			state="true"
+			lightweight="true"
+			class="ch.usi.inf.seahawk.decorator.FileExplorerDecorator"
+			id="ch.usi.inf.seahawk.decorator.FileExplorerDecorator"> 
+			<description>
+				Lightweight decorator to notify new annotations
+			</description>		
+           
+		</decorator>
+	</extension>
+   
+   <extension
+   	point="org.eclipse.ui.commands">
+   		<command
+            id="ch.usi.inf.seahawk.menu.CompilationUnitEditorContextMenu"
+            name="AskSeahawk">
+      	</command>
+      	<command
+            id="ch.usi.inf.seahawk.menu.SearchViewShortcutHandler"
+            name="SearchShorcut">
+      	</command>
+   </extension>
+   
+    <extension
+       point="org.eclipse.ui.handlers">
+    	<handler
+            class="ch.usi.inf.seahawk.menu.CompilationUnitEditorContextMenu"
+            commandId="ch.usi.inf.seahawk.menu.CompilationUnitEditorContextMenu">
+      	</handler>
+      	<handler
+            class="ch.usi.inf.seahawk.menu.SearchViewShortcutHandler"
+            commandId="ch.usi.inf.seahawk.menu.SearchViewShortcutHandler">
+      	</handler>
+ 	</extension>
+	
+	<extension
+		point="org.eclipse.ui.menus">
+	
+		<menuContribution
+        	locationURI="popup:#CompilationUnitEditorContext?after=additions">
+       	<command
+        	commandId="ch.usi.inf.seahawk.menu.CompilationUnitEditorContextMenu"
+            id="ch.usi.inf.seahawk.menu.CompilationUnitEditorContextMenu"
+            label="Ask Seahawk..."
+            icon="icons/icon.png"
+            style="push">
+      		<visibleWhen>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+
+	</extension>
+	
+	<extension point="org.eclipse.ui.popupMenus">
+  		<objectContribution
+      		objectClass="org.eclipse.jdt.core.IJavaElement"
+      		id="org.eclipse.jdt.core.IMember">
+      		
+       	<action
+       		label="Ask Seahawk..."
+      		class="ch.usi.inf.seahawk.menu.JavaElementAction"
+      		id="action.seahawk.JavaElement"
+      		icon="icons/icon.png">
+       	</action>
+      </objectContribution>
+	</extension>
+	
+	<extension point="org.eclipse.ui.bindings">
+		<key sequence="Ctrl+U"
+			commandId="ch.usi.inf.seahawk.menu.SearchViewShortcutHandler"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			contextId="org.eclipse.ui.contexts.window"
+		/>
+	</extension>
+
+
+</plugin>

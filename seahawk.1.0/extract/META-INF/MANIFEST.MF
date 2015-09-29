@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Seahawk
+Bundle-SymbolicName: ch.usi.inf.seahawk;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: ch.usi.inf.seahawk.Activator
+Bundle-Vendor: University of Lugano
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.jd
+ t;bundle-version="3.7.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,lib/ch.usi.inf.seahawk.document.jar,lib/commons-co
+ dec-1.4.jar,lib/commons-httpclient-3.1.jar,lib/commons-io-2.0.1.jar,l
+ ib/jackson-all-1.9.4.jar,lib/jcl-over-slf4j-1.6.1.jar,lib/mysql-conne
+ ctor-java-5.1.18-bin.jar,lib/postgresql-9.1-901.jdbc4.jar,lib/slf4j-a
+ pi-1.6.1.jar,lib/slf4j-jdk14-1.6.1.jar,lib/solr-solrj-3.5.0.jar,lib/s
+ qlitejdbc-v056.jar,lib/jsoup-1.6.2.jar,lib/commons-lang3-3.1.jar
+Import-Package: org.eclipse.ant.internal.ui.preferences,org.eclipse.co
+ re.resources,org.eclipse.jdt.core,org.eclipse.jface.text,org.eclipse.
+ jface.text.reconciler,org.eclipse.jface.text.rules,org.eclipse.jface.
+ text.source,org.eclipse.text.undo,org.eclipse.ui,org.eclipse.ui.part,
+ org.eclipse.ui.texteditor
+
