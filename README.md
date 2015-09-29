@@ -6,8 +6,8 @@ This repository _is not_ the original repository for this tool. Here are some li
 * [The Official Project Page, including the executable binary](http://seahawk.inf.usi.ch/)
 * [A Video of the Tool](http://youtu.be/DkqhiU9FYPI)
 
-In this repository, for ExampleTool you will find:
+In this repository for Seahawk, you will find:
 * :x: Source code (not available)
-* :white_check_mark: [The original tool](SomeExecutableInTheRepo) (available)
+* :white_check_mark: [The original tool](https://github.com/ynandak/ICSE-2013-Seahawk/blob/master/seahawk.1.0/ch.usi.inf.seahawk_1.0.0.jar) (available)
 
 This repository was constructed by [Yogesh Nandakumar](https://github.com/ynandak) under the supervision of [Emerson Murphy-Hill](https://github.com/CaptainEmerson). 
