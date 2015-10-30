@@ -4,6 +4,7 @@ This repository contains information related to the tool Seahawk presented in th
 
 This repository _is not_ the original repository for this tool. Here are some links to the original project:
 * [The Official Project Page, including the executable binary](http://seahawk.inf.usi.ch/)
+* [Download page and deployment instructions](http://seahawk.inf.usi.ch/download.html)
 * [A Video of the Tool](http://youtu.be/DkqhiU9FYPI)
 
 In this repository for Seahawk, you will find:
