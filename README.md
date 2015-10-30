@@ -10,4 +10,4 @@ In this repository for Seahawk, you will find:
 * :x: Source code (not available)
 * :white_check_mark: [The original tool](https://github.com/ynandak/ICSE-2013-Seahawk/blob/master/seahawk.1.0/ch.usi.inf.seahawk_1.0.0.jar) (available)
 
-This repository was constructed by [Yogesh Nandakumar](https://github.com/ynandak) under the supervision of [Emerson Murphy-Hill](https://github.com/CaptainEmerson). 
+This repository was constructed by [Yogesh Nandakumar](https://github.com/ynandak) under the supervision of [Emerson Murphy-Hill](https://github.com/CaptainEmerson). Thanks to Mr. Luca Ponzanelli and his colleagues for their help in establishing this repository.
